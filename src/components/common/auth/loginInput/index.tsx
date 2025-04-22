@@ -10,7 +10,7 @@ const LoginInput = ({
     return (
         <>
             <input
-                className={`py-2 px-5 w-full h-[3.6rem] rounded-[0.4rem] border-[1px] text-[1.2rem] ${
+                className={`py-2 px-3.5 w-full h-9 rounded-sm border-1 text-xs ${
                     isError ? "border-main" : "border-gray"
                 }
                 focus:outline-none focus:border-main`}

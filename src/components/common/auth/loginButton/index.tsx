@@ -4,7 +4,7 @@ import React from "react";
 const LoginButton = ({ title, condition }: LoginButtonProps) => {
     return (
         <div
-            className={`w-full flex items-center justify-center py-[0.56rem] h-[3.5rem] text-white rounded-[0.4rem] cursor-pointer text-[1.6rem] ${
+            className={`w-full flex items-center justify-center py-2 h-10 text-white rounded-sm cursor-pointer text-base ${
                 condition ? "bg-main" : "bg-gray"
             }`}
         >
