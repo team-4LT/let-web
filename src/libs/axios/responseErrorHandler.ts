@@ -1,6 +1,6 @@
 import { API_URL } from "@/constants/api";
 import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
-import solveAxios from "./solveAxios";
+import solveAxios from "./customAxios";
 import {
   ACCESS_TOKEN_KEY,
   REFRESH_TOKEN_KEY,
