@@ -6,6 +6,7 @@ import localFont from "next/font/local";
 import {CookiesProvider} from "next-client-cookies/server";
 import ProgressProvider from "@/components/providers/ProgressProvider";
 import QueryProvider from "@/components/providers/QueryProvider";
+import Header from "@/components/common/header";
 
 export const metadata: Metadata = {
   title: "LET",
@@ -30,7 +31,10 @@ const RootLayout = ({
         <ProgressProvider>
           <QueryProvider>
             <CookiesProvider>
-              <div className="w-full min-h-screen bg-bg">{children}</div>
+              <div className="w-full min-h-screen bg-bg">
+                <Header/>
+                {children}
+              </div>
             </CookiesProvider>
           </QueryProvider>
         </ProgressProvider>
