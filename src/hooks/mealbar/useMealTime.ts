@@ -1,4 +1,4 @@
-export const MealTime = () => {
+export const useMealTime = () => {
     const now = new Date();
     const hour = now.getHours();
 
