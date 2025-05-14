@@ -2,11 +2,11 @@ import RatioBar from "../ratioBar";
 
 const StudentRatio = () => {
     return (
-        <div className="w-full px-7 py-5 bg-white flex flex-col items-center">
+        <div className="w-full px-7 py-5 bg-white flex flex-col items-center rounded-sm">
             <div className="text-xl text-black font-semibold">
                 학년별 식사자 비율
             </div>
-            <div className="flex gap-20">
+            <div className="w-full flex justify-between">
                 {/* 1학년 */}
               <div className="flex flex-col items-center gap-5">
                   <div className="flex gap-10 items-end h-72"> 
