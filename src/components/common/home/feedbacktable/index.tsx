@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Feedbacktable = () => {
   return (
     <div className='w-fill p-5 h-72 bg-white flex flex-col rounded-sm'>

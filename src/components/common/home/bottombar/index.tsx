@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Bottombar = () => {
   return (
         <div className="w-full bg-white h-16 px-5 py-3.5 flex items-center justify-between rounded-sm">

@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Margintable = () => {
   return (
     <div className='w-full h-70 px-7 py-5 bg-white rounded-sm flex flex-col gap-8'>
