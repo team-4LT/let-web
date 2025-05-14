@@ -1,7 +1,6 @@
 import Checktable from '@/components/common/statistics/checktable'
 import MuchTable from '@/components/common/statistics/muchtable'
 import StudentRatio from '@/components/common/statistics/studentRatio'
-import React from 'react'
 
 const Statistics = () => {
   return (
@@ -11,10 +10,10 @@ const Statistics = () => {
           <div className='w-[53.125rem] min-h-90 flex gap-5'>
             <Checktable/>
             <MuchTable/>
-        </div>
+          </div>
       </div>
     </div>
-  )
+      )
 }
 
-export default Statistics
+export default Statistics;
