@@ -33,7 +33,7 @@ const RootLayout = ({
                         <CookiesProvider>
                             <div className="w-full min-h-screen bg-bg">
                                 <Header />
-                                <div className="w-full flex justify-center gap-5 pt-5">
+                                <div className="w-full flex justify-center gap-5 pt-25">
                                     <Sidebar />
                                     {children}
                                 </div>
