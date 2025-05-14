@@ -8,7 +8,7 @@ export const useLogin = () => {
     const [id, setId] = useState<string>("");
     const [pw, setPw] = useState<string>("");
     const [isError, setError] = useState<boolean>(false);
-    // const [isSave, setSave] = useState<boolean>(true);
+    
     const login = async () => {
         const { data } = await axios.post(
             `${import.meta.env.VITE_API_URL}/auth/login`,

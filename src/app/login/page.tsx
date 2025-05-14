@@ -2,7 +2,6 @@
 import LoginButton from "@/components/common/auth/loginButton";
 import LoginInput from "@/components/common/auth/loginInput";
 import { useLogin } from "@/hooks/auth/useLogin";
-import React from "react";
 
 const Login = () => {
     const { id, setId, pw, setPw, isError } = useLogin();
