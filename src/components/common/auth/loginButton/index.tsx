@@ -1,5 +1,4 @@
 import { LoginButtonProps } from "@/types/props/auth/loginButtonProps";
-import React from "react";
 
 const LoginButton = ({ title, condition }: LoginButtonProps) => {
     return (
