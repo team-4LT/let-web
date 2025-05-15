@@ -7,7 +7,7 @@ const Checkbutton = ({id, checkNum, setCheckNum}:CheckButtonProps) => {
     {background : "#EFEFEF", color:"#303030"}}
     onClick={()=>setCheckNum(id)}
     >
-      {id}학년
+      {id === 0 ? "전체" : `${id}학년`}
     </div>
   )
 }

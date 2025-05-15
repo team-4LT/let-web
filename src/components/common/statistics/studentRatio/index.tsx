@@ -1,10 +1,26 @@
+"use client"
+
+import { useState } from "react";
+import Checkbutton from "../checkbutton";
 import RatioBar from "../ratioBar";
 
 const StudentRatio = () => {
+    const [checkNum, setCheckNum] = useState<0 | 1 | 2 | 3>(0);
     return (
         <div className="w-full px-7 py-5 bg-white flex flex-col items-center rounded-sm">
-            <div className="text-xl text-black font-semibold">
-                학년별 식사자 비율
+            <div className="w-full flex justify-between items-center">
+                <div className="font-semibold text-black text-xl ">학년별 식사자 비율</div>
+                {/* 1, 2, 3학년 필터 */}
+                <div className="flex gap-2">
+                    {[0, 1, 2, 3].map((id) => (
+                        <Checkbutton
+                            key={id}
+                            id={id as 0 | 1 | 2 | 3}
+                            checkNum={checkNum}
+                            setCheckNum={setCheckNum}
+                        />
+                    ))}
+                </div>
             </div>
             <div className="w-full flex justify-between">
                 {/* 1학년 */}
