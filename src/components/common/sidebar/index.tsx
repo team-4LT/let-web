@@ -11,7 +11,7 @@ const Sidebar = () => {
     }
 
     return (
-        <div className="w-53 h-96 p-4 bg-white flex flex-col gap-4 rounded-sm">
+        <div className="w-52 h-96 p-4 bg-white flex flex-col gap-4 rounded-sm">
             {/* 홈 화면 */}
             <div onClick={()=>{router.push("/");}} className="w-full text-base pl-2 py-2 cursor-pointer" 
             style={condition("/")}>홈</div>
