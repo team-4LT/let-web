@@ -16,12 +16,12 @@ const Statustable = () => {
                 </div>
             </div>
             <div className="text-center text-darkgrey text-sm py-6">
-                {condition}에{" "}
+                {condition}을 거른 사람이
+                <br />
                 <span className="font-bold">
-                    총 85명의
-                    <br />
+                    총 85명{" "}
                 </span>
-                미식사자가 있습니다.
+                있습니다.
             </div>
         </div>
     );
