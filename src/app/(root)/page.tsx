@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <div>
             {/* 전부 다 합치는 곳 */}
-                <div className="w-full flex gap-5">
+                <div className="w-[51rem] flex gap-5">
                     {/* 급식 메뉴, 잔반 제로 수, 바텀바 띄워주는 곳 */}
                     <div className="max-w-2xl flex flex-col gap-5">
                         <Mealbar />
