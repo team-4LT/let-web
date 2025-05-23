@@ -24,7 +24,7 @@ const increaseTime = () => {
     <div className="w-full h-full px-7 py-5 bg-white flex flex-col items-center gap-6 rounded-sm"
         style={{ width: `${53.125 / 2 - 1.25 / 2}rem` }}>
         <div className="w-full flex justify-between items-center">
-            <div className="font-semibold text-black text-xl ">금월 가장 식사자가 많은 날</div>
+            <div className="font-semibold text-black text-xl ">이번 달 가장 식사자가 많은 날</div>
             <div className='flex w-14 h-6 rounded-sm justify-center items-center 
             text-xs font-semibold cursor-pointer bg-grey text-black'>
                 12일

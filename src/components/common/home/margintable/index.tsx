@@ -1,7 +1,11 @@
+import { useMealTime } from "@/hooks/mealbar/useMealTime";
+
 const Margintable = () => {
+
+  const { condition } = useMealTime();
   return (
     <div className='w-full h-70 px-7 py-5 bg-white rounded-sm flex flex-col gap-8'>
-      <div className='text-black font-semibold text-base'>점심 평균 잔반 제로수</div>
+      <div className='text-black font-semibold text-base'>{condition} 평균 식사자 비율</div>
         <div className='flex flex-col gap-8'>
             <div className='flex gap-3.5 h-10 items-center'>
                 <div className='text-black font-medium text-base'>1학년</div>
