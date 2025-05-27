@@ -1,4 +1,4 @@
-export interface RankMeue{
+export interface rankBoxProps{
   rank:number;
   menuName:string;
   score:number;

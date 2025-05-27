@@ -1,8 +1,14 @@
 import React from 'react'
+import { rankBoxProps } from "@/types/props/statistics/rankBoxProps"
 
-const RankBox = () => {
+const RankBox = ({rank, menuName, score, change}:rankBoxProps) => {
   return (
-    <div>index</div>
+    <div>
+      <div>{rank}위</div>
+      <div>{menuName}</div>
+      <div>{score}</div>
+      <div>{change}</div>
+    </div>
   )
 }
 
