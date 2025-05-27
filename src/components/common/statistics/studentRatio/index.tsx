@@ -5,7 +5,7 @@ import Checkbutton from "../checkbutton";
 import RatioBar from "../ratioBar";
 
 const StudentRatio = () => {
-    const [checkNum, setCheckNum] = useState<0 | 1 | 2 | 3>(0);
+    const [checkNum, setCheckNum] = useState<number>(0);
     return (
         <div className="w-full px-7 py-5 bg-white flex flex-col items-center rounded-sm">
             <div className="w-full flex justify-between items-center">

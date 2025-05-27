@@ -4,7 +4,7 @@ import Checkbutton from "../checkbutton";
 import Checklist from "../checklist";
 
 const Checktable = () => {
-    const [checkNum, setCheckNum] = useState<1 | 2 | 3>(1);
+    const [checkNum, setCheckNum] = useState<number>(0);
     return (
         <div className="w-full h-full px-7 py-5 bg-white flex flex-col items-center gap-6 rounded-sm"
             style={{ width: `${53.125 / 2 - 1.25 / 2}rem` }}>
@@ -15,7 +15,7 @@ const Checktable = () => {
                     {[1, 2, 3].map((id) => (
                         <Checkbutton
                             key={id}
-                            id={id as 1 | 2 | 3}
+                            id={id as 0 | 1 | 2}
                             checkNum={checkNum}
                             setCheckNum={setCheckNum}
                         />
