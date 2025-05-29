@@ -9,7 +9,7 @@ const StudentRatio = () => {
     return (
         <div className="w-full px-7 py-5 bg-white flex flex-col items-center rounded-sm">
             <div className="w-full flex justify-between items-center">
-                <div className="font-semibold text-black text-xl ">학년별 식사자 비율</div>
+                <div className="font-semibold text-black text-base ">학년별 식사자 비율</div>
                 {/* 1, 2, 3학년 필터 */}
                 <div className="flex gap-2">
                     {[0, 1, 2, 3].map((id) => (
