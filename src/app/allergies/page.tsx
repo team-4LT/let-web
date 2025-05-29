@@ -1,6 +1,6 @@
 const Allergies = () => {
   return (
-    <div className="">
+    <div className="w-full h-screen flex justify-center pt-5">
     </div>
   )
 }
