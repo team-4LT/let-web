@@ -1,18 +1,15 @@
 import React from 'react'
-import { rankBoxProps } from "@/types/props/likes/rankBoxProps"
-import { useChangeElement } from '@/hooks/likes/getElement';
+import { rankBoxProps } from "@/types/props/statistics/rankBoxProps"
 
-const RankBox = ({ rank, menuName, score, changeValue }: rankBoxProps) => {
-  const ChangeElement = useChangeElement(changeValue);
-
+const RankBox = ({rank, menuName, score, change}:rankBoxProps) => {
   return (
-    <div className="flex gap-2.5 px-2.5 py-3.75 text-black text-base">
-      <div className="w-37.5">{rank}위</div>
-      <div className="w-62.5">{menuName}</div>
-      <div className="w-50">{score}</div>
-      <div className="w-25">{ChangeElement}</div>
+    <div>
+      <div>{rank}위</div>
+      <div>{menuName}</div>
+      <div>{score}</div>
+      <div>{change}</div>
     </div>
-  );
-};
+  )
+}
 
-export default RankBox;
+export default RankBox
