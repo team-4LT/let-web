@@ -1,9 +1,9 @@
 import React from 'react'
 import { RankBoxProps } from "@/types/props/likes/rankBoxProps"
-import { getChangeElement } from '@/hooks/likes/getChangeElement';
+import { useGetChangeElement } from '@/hooks/likes/useGetChangeElement';
 
 const RankBox = ({ rank, menuName, score, changeValue }: RankBoxProps) => {
-  const change = getChangeElement(changeValue);
+  const change = useGetChangeElement(changeValue);
 
   return (
   <div className="flex gap-2.5 px-2.5 py-3.75 text-black text-base">

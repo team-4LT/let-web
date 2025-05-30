@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export const getChangeElement = (changeValue:number) => {
+export const useGetChangeElement = (changeValue:number) => {
   if (changeValue === 0)
     return <div className='text-darkgrey'>-</div>
   else if(changeValue > 0){
@@ -17,7 +17,7 @@ export const getChangeElement = (changeValue:number) => {
     )
   }else {
     return (
-      <div className='flex gap-2 text-[#0061FE]'>
+      <div className='flex gap-2 text-blue'>
         <Image
           src="/assets/downArrow.svg"
           alt="하락"
