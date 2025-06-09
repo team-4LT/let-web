@@ -1,6 +1,6 @@
-import Checktable from "@/components/common/statistics/checktable";
-import MuchTable from "@/components/common/statistics/muchtable";
-import StudentRatio from "@/components/common/statistics/studentRatio";
+import Checktable from "@/components/common/statistics/CheckTable";
+import MuchTable from "@/components/common/statistics/MuchTable";
+import StudentRatio from "@/components/common/statistics/StudentRatio";
 
 const Statistics = () => {
     return (

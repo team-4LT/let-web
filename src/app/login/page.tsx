@@ -1,6 +1,6 @@
 "use client";
-import LoginButton from "@/components/common/auth/loginButton";
-import LoginInput from "@/components/common/auth/loginInput";
+import LoginButton from "@/components/common/auth/LoginButton";
+import LoginInput from "@/components/common/auth/LoginInput";
 import { useLogin } from "@/hooks/auth/useLogin";
 
 const Login = () => {

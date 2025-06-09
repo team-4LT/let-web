@@ -1,10 +1,11 @@
 'use client'
 
+import { useCustomRouter } from "@/hooks/useCustomRouter";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 const Sidebar = () => {
-    const router = useRouter();
+    const router = useCustomRouter();
     const pathname = usePathname();
     const condition = (currentPath: string) =>{
         return pathname === currentPath ? {backgroundColor : "#FE6B4B", color : "white"} : {background:"white", color:"#303030"}
