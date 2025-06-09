@@ -13,11 +13,11 @@ const MuchTable = () => {
     ];
     const [time, setTime] = useState(1);
     const decreaseTime = () => {
-        time !== 0 ? setTime((prev) => prev - 1) : setTime(2);
+        setTime(time !== 0 ? (prev)=>prev+1 : (prev)=>prev+2);
     };
 
     const increaseTime = () => {
-        time !== 2 ? setTime((prev) => prev + 1) : setTime(0);
+        setTime(time !== 0 ? (prev) => prev + 1 : 0);
     };
 
     return (

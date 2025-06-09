@@ -2,7 +2,6 @@
 
 import { useCustomRouter } from "@/hooks/useCustomRouter";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
 
 const Sidebar = () => {
     const router = useCustomRouter();
