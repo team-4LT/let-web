@@ -1,8 +1,8 @@
-import Bottombar from "@/components/common/home/bottombar";
-import Feedbacktable from "@/components/common/home/feedbacktable";
-import Margintable from "@/components/common/home/margintable";
-import Mealbar from "@/components/common/home/mealbar";
-import Statustable from "@/components/common/home/statustable";
+import Bottombar from "@/components/common/home/Bottombar";
+import Feedbacktable from "@/components/common/home/FeedbackTable";
+import Margintable from "@/components/common/home/MarginTable";
+import Mealbar from "@/components/common/home/Mealbar";
+import Statustable from "@/components/common/home/StatusTable";
 
 const Home = () => {
     return (

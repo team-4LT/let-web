@@ -1,4 +1,4 @@
-import RankTable from "@/components/common/likes/rankTable";
+import RankTable from "@/components/common/likes/RankTable";
 
 const Likes = () => {
     return (
