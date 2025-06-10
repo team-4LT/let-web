@@ -26,7 +26,7 @@ const Sidebar = () => {
             style={condition("/allergies")}>급식표 & 알러지</div>
             
             <div className="w-full border-t-1 py-4 border-t-grey">
-                <div className="pl-2 text-main">로그아웃</div>
+                <div className="pl-2 text-main cursor-pointer">로그아웃</div>
             </div>
         </div>
     );

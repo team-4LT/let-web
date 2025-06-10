@@ -5,7 +5,7 @@ const RankTable = () => {
     return (
         <div className="w-full flex flex-col gap-5 px-7.5 py-5 bg-white rounded">
             <div className="flex justify-between">
-                <p className="font-semibold text-base">메뉴 선호 순위</p>
+                <p className="font-semibold text-xl">메뉴 선호 순위</p>
                 <div>buttons</div>
             </div>
             <div className="divide-y divide-grey">
