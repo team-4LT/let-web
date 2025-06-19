@@ -1,7 +1,19 @@
+"use client";
 import { useMealTime } from "@/hooks/mealbar/useMealTime";
+import { useGetDailyMenu } from "@/hooks/useGetDailyMenu";
+import { useEffect, useState } from "react";
 
 const Mealbar = () => {
-    const { condition } = useMealTime();
+    const { condition, date } = useMealTime();
+    const [meal, setMeal] = useState();
+    const { getDailyMenu } = useGetDailyMenu();
+    useEffect(() => {
+        const fetchMeal = async () => {
+            const data = await getDailyMenu(date);
+            setMeal(data.menus.menuName ?? "등록된 급식이 없습니다.");
+        };
+        fetchMeal();
+    }, [date, getDailyMenu]);
 
     return (
         <div className="w-full bg-white h-16 px-5 py-3.5 flex justify-between items-center rounded-sm">
@@ -22,8 +34,7 @@ const Mealbar = () => {
                 </div>
             </div>
             <div className="w-2xs text-placeholder font-normal text-right text-sm">
-                백미밥, 조랭이떡국, 구름치즈찜닭, 집게맛살튀김, 오이 겉절이,
-                오이 겉절이, 배추김치
+                {meal}
             </div>
         </div>
     );
