@@ -1,20 +1,31 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Checkbutton from "./CheckButton";
 import Checklist from "./CheckList";
+import { useGetEater } from "@/hooks/statistics/useGetEater";
 
 const Checktable = () => {
     const [checkNum, setCheckNum] = useState<number>(1);
+    const [eater, setEater] = useState<Eater[]>();
+    const { getEater } = useGetEater();
+
+    useEffect(() => {
+        const fetchEater = async () => {
+            const data = await getEater(checkNum);
+            setEater(data);
+        };
+        fetchEater();
+    }, [checkNum]);
+
     return (
         <div
             className="w-full h-full px-7 py-5 bg-white flex flex-col items-center gap-6 rounded-sm"
             style={{ width: `${53.125 / 2 - 1.25 / 2}rem` }}
         >
             <div className="w-full flex justify-between items-center">
-                <div className="font-semibold text-black text-xl ">
+                <div className="font-semibold text-black text-xl">
                     식사자 조회
                 </div>
-                {/* 1, 2, 3학년 필터 */}
                 <div className="flex gap-2">
                     {[1, 2, 3].map((id) => (
                         <Checkbutton
@@ -26,7 +37,20 @@ const Checktable = () => {
                     ))}
                 </div>
             </div>
-            <Checklist />
+            {eater && eater.length > 0 ? (
+                eater.map((item) => (
+                    <Checklist
+                        key={item.eaterId}
+                        id={item.eaterId}
+                        name={item.user.realName}
+                        number={item.user.studentId}
+                        isEat={item.eaten}
+                        grade={checkNum}
+                    />
+                ))
+            ) : (
+                <div className="text-base text-grey">데이터가 없습니다.</div>
+            )}
         </div>
     );
 };

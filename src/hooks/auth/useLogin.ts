@@ -1,5 +1,5 @@
+import customAxios from "@/libs/axios/customAxios";
 import { cookieManager } from "@/utilities/cookie";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -15,10 +15,7 @@ export const useLogin = () => {
 
     const login = async () => {
         try {
-            const res = await axios.post(
-                `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
-                loginData
-            );
+            const res = await customAxios.post(`/auth/login`, loginData);
             if (res) {
                 if (res?.data.res === 200) {
                     router.push("/");

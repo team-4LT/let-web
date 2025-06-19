@@ -1,19 +1,21 @@
 "use client";
 import { useMealTime } from "@/hooks/mealbar/useMealTime";
-import { useGetDailyMenu } from "@/hooks/useGetDailyMenu";
+import { useGetDailyMenu } from "@/hooks/home/useGetDailyMenu";
 import { useEffect, useState } from "react";
 
 const Mealbar = () => {
     const { condition, date } = useMealTime();
     const [meal, setMeal] = useState();
     const { getDailyMenu } = useGetDailyMenu();
+    
+    // 급식 불러오기
     useEffect(() => {
         const fetchMeal = async () => {
             const data = await getDailyMenu(date);
-            setMeal(data.menus.menuName ?? "등록된 급식이 없습니다.");
+            setMeal(data?.menus?.menuName ?? "등록된 급식이 없습니다.");
         };
         fetchMeal();
-    }, [date, getDailyMenu]);
+    }, []);
 
     return (
         <div className="w-full bg-white h-16 px-5 py-3.5 flex justify-between items-center rounded-sm">
