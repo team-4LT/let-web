@@ -4,7 +4,7 @@ import LoginInput from "@/components/common/auth/LoginInput";
 import { useLogin } from "@/hooks/auth/useLogin";
 
 const Login = () => {
-  const { id, setId, pw, setPw, isError } = useLogin();
+  const { id, setId, pw, setPw, isError, login } = useLogin();
   return (
     <div className="w-full min-h-screen flex justify-center items-center">
       <div className="bg-white px-8 py-9 w-96 flex flex-col items-center">
@@ -34,7 +34,7 @@ const Login = () => {
               </div>
             </div>
           </div>
-          <LoginButton title="로그인" condition={id && pw} />
+          <LoginButton title="로그인" condition={!!(id.trim() && pw.trim())} onClick={login}/>
         </div>
       </div>
       <div className="text-sm absolute bottom-8 text-black font-light">

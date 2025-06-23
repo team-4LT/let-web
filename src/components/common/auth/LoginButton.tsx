@@ -1,25 +1,16 @@
-import { useLogin } from "@/hooks/auth/useLogin";
 import { LoginButtonProps } from "@/types/props/auth/loginButtonProps";
 
-const LoginButton = ({ title, condition }: LoginButtonProps) => {
-    const { login } = useLogin();
+const LoginButton = ({ title, condition, onClick }: LoginButtonProps) => {
     return (
-        <div
-            className={`w-full flex items-center justify-center py-2 h-10 text-white rounded-sm cursor-pointer text-base ${
-                condition ? "" : "bg-grey"
+        <button
+            className={`w-full h-10 bg-main text-white text-sm rounded-sm ${
+                !condition ? "opacity-50 cursor-not-allowed" : ""
             }`}
-            style={
-                condition
-                    ? {
-                          background:
-                              "linear-gradient(180deg, #FF3939 0%, #FF8957 100%)",
-                      }
-                    : undefined
-            }
-            onClick={() => login()}
+            onClick={() => condition && onClick()}
+            disabled={!condition}
         >
             {title}
-        </div>
+        </button>
     );
 };
 

@@ -8,16 +8,16 @@ export const useLogin = () => {
     const [id, setId] = useState<string>("");
     const [pw, setPw] = useState<string>("");
     const [isError, setError] = useState<boolean>(false);
-    const loginData = {
-        username: id,
-        password: pw,
-    };
 
     const login = async () => {
+        const loginData = {
+            username: id.trim(),
+            password: pw.trim(),
+        };
         try {
             const res = await customAxios.post(`/auth/login`, loginData);
             if (res) {
-                if (res?.data.res === 200) {
+                if (res?.status === 200 || res?.status === 201) {
                     router.push("/");
                     setError(false);
                     alert("로그인 완료.");
