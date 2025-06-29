@@ -7,10 +7,10 @@ const MealCell = (props:MealCellProps) => {
   return (
     <div
       onClick={onClick}
-      className={`p-[10px] border-[0.5px] border-grey bg-white text-black text-xs font-extralight ${isSelected? 'outline-[2px] outline-main border-main': ''}`}
+      className={`p-2.5 border-1 border-grey bg-white text-black text-xs font-extralight ${isSelected? 'outline-0.5 outline-main border-main': ''}`}
     >
       <div className='text-black text-sm font-medium'>{mealDate}</div>
-      <div className='flex flex-col justify-center gap-[5px] mt=[5px]'>
+      <div className='flex flex-col justify-center gap-1.75 mt=1.75'>
         <div className='text-second text-xs font-medium'>{calorie}</div>
         {menus? menus.map((menu) => (
           <div key={menu.menuId}>
