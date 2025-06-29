@@ -1,6 +1,5 @@
 "use client";
 
-import React from 'react'
 import CalendarHeader from './CalendarHeader'
 import sampleMealData from '@/data/sampleMeal.json'
 import { useGetThisMonthProps } from '@/hooks/allergies/useGetThisMonthCalendar'

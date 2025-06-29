@@ -1,4 +1,3 @@
-import React from 'react'
 import { MealCellProps } from '@/types/props/allergies/mealCellProps';
 
 const MealCell = (props:MealCellProps) => {

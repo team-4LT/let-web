@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from 'react';
 import { selectedDateStore } from '@/stores/allergies/selectedDateStore';
 import { allergiesStore } from '@/stores/allergies/allergiesStroe';
 
