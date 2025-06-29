@@ -1,0 +1,362 @@
+[
+  {
+    "mealId": 33,
+    "mealDate": "2025-06-03T15:00:00.000+00:00",
+    "mealType": "조식",
+    "calorie": 695.3,
+    "menus": [
+      {
+        "menuId": 186,
+        "menuName": "*빅용가리치킨/머스타드소스"
+      },
+      {
+        "menuId": 185,
+        "menuName": "미역장국"
+      }
+    ]
+  },
+  {
+    "mealId": 34,
+    "mealDate": "2025-06-04T15:00:00.000+00:00",
+    "mealType": "조식",
+    "calorie": 861.9,
+    "menus": [
+      {
+        "menuId": 189,
+        "menuName": "쇠고기야채죽"
+      },
+      {
+        "menuId": 190,
+        "menuName": "*고기떡말이"
+      },
+      {
+        "menuId": 193,
+        "menuName": "포.로켓단초코빵"
+      },
+      {
+        "menuId": 192,
+        "menuName": "현미시리얼&우유"
+      }
+    ]
+  },
+  {
+    "mealId": 35,
+    "mealDate": "2025-06-08T15:00:00.000+00:00",
+    "mealType": "조식",
+    "calorie": 805.2,
+    "menus": [
+      {
+        "menuId": 196,
+        "menuName": "미니돈까스"
+      },
+      {
+        "menuId": 195,
+        "menuName": "황태국"
+      }
+    ]
+  },
+  {
+    "mealId": 36,
+    "mealDate": "2025-06-09T15:00:00.000+00:00",
+    "mealType": "조식",
+    "calorie": 655.5,
+    "menus": [
+      {
+        "menuId": 201,
+        "menuName": "*샐러드바/드레싱"
+      },
+      {
+        "menuId": 203,
+        "menuName": "대만식연유토스트"
+      },
+      {
+        "menuId": 205,
+        "menuName": "그래놀라크랜베리아몬드+우유"
+      }
+    ]
+  },
+  {
+    "mealId": 37,
+    "mealDate": "2025-06-10T15:00:00.000+00:00",
+    "mealType": "조식",
+    "calorie": 655.5,
+    "menus": [
+      {
+        "menuId": 207,
+        "menuName": "쇠고기미역국"
+      },
+      {
+        "menuId": 208,
+        "menuName": "닭불고기"
+      }
+    ]
+  },
+  {
+    "mealId": 38,
+    "mealDate": "2025-06-11T15:00:00.000+00:00",
+    "mealType": "조식",
+    "calorie": 621.2,
+    "menus": [
+      {
+        "menuId": 214,
+        "menuName": "*고래밥시리얼+우유"
+      },
+      {
+        "menuId": 212,
+        "menuName": "딸기잼크림치즈토스트"
+      }
+    ]
+  },
+  {
+    "mealId": 39,
+    "mealDate": "2025-06-12T15:00:00.000+00:00",
+    "mealType": "조식",
+    "calorie": 570.2,
+    "menus": [
+      {
+        "menuId": 217,
+        "menuName": "맑은어묵국"
+      },
+      {
+        "menuId": 219,
+        "menuName": "*비엔나케첩볶음"
+      },
+      {
+        "menuId": 218,
+        "menuName": "참나물무침"
+      }
+    ]
+  },
+  {
+    "mealId": 40,
+    "mealDate": "2025-06-15T15:00:00.000+00:00",
+    "mealType": "조식",
+    "calorie": 862.4,
+    "menus": [
+      {
+        "menuId": 224,
+        "menuName": "다시마부각"
+      },
+      {
+        "menuId": 225,
+        "menuName": "용가리떡갈비"
+      },
+      {
+        "menuId": 222,
+        "menuName": "*스팸볶음밥"
+      }
+    ]
+  },
+  {
+    "mealId": 41,
+    "mealDate": "2025-06-16T15:00:00.000+00:00",
+    "mealType": "조식",
+    "calorie": 994.4,
+    "menus": [
+      {
+        "menuId": 232,
+        "menuName": "초코첵스시리얼+우유"
+      },
+      {
+        "menuId": 230,
+        "menuName": "*과일샐러드"
+      },
+      {
+        "menuId": 233,
+        "menuName": "약과처럼도넛처럼"
+      },
+      {
+        "menuId": 228,
+        "menuName": "쇠고기야채죽"
+      },
+      {
+        "menuId": 229,
+        "menuName": "*동그랑땡굴소스조림"
+      }
+    ]
+  },
+  {
+    "mealId": 42,
+    "mealDate": "2025-06-17T15:00:00.000+00:00",
+    "mealType": "조식",
+    "calorie": 807.9,
+    "menus": [
+      {
+        "menuId": 235,
+        "menuName": "*새알심만두국"
+      }
+    ]
+  },
+  {
+    "mealId": 43,
+    "mealDate": "2025-06-18T15:00:00.000+00:00",
+    "mealType": "조식",
+    "calorie": 564,
+    "menus": [
+      {
+        "menuId": 240,
+        "menuName": "참치야채죽"
+      },
+      {
+        "menuId": 241,
+        "menuName": "소금빵어니언핫도그"
+      },
+      {
+        "menuId": 243,
+        "menuName": "후르트링+우유"
+      }
+    ]
+  },
+  {
+    "mealId": 44,
+    "mealDate": "2025-06-19T15:00:00.000+00:00",
+    "mealType": "조식",
+    "calorie": 697.9,
+    "menus": [
+      {
+        "menuId": 246,
+        "menuName": "크로와상샌드위치"
+      },
+      {
+        "menuId": 248,
+        "menuName": "오레오오즈+우유"
+      },
+      {
+        "menuId": 245,
+        "menuName": "*치즈닭갈비주먹밥"
+      }
+    ]
+  },
+  {
+    "mealId": 45,
+    "mealDate": "2025-06-22T15:00:00.000+00:00",
+    "mealType": "조식",
+    "calorie": 625.7,
+    "menus": [
+      {
+        "menuId": 251,
+        "menuName": "*메추리알장조림"
+      },
+      {
+        "menuId": 254,
+        "menuName": "코코볼시리얼+우유"
+      },
+      {
+        "menuId": 253,
+        "menuName": "햄치즈샌드"
+      }
+    ]
+  },
+  {
+    "mealId": 46,
+    "mealDate": "2025-06-23T15:00:00.000+00:00",
+    "mealType": "조식",
+    "calorie": 777.3,
+    "menus": [
+      {
+        "menuId": 256,
+        "menuName": "*돼지국밥"
+      },
+      {
+        "menuId": 260,
+        "menuName": "완숙토마토/발사믹드레싱"
+      },
+      {
+        "menuId": 257,
+        "menuName": "시금치무침"
+      },
+      {
+        "menuId": 258,
+        "menuName": "*깐쇼새우"
+      }
+    ]
+  },
+  {
+    "mealId": 47,
+    "mealDate": "2025-06-24T15:00:00.000+00:00",
+    "mealType": "조식",
+    "calorie": 718,
+    "menus": [
+      {
+        "menuId": 261,
+        "menuName": "*퀴노아야채죽"
+      },
+      {
+        "menuId": 262,
+        "menuName": "불고기치즈파니니"
+      },
+      {
+        "menuId": 265,
+        "menuName": "그래놀라크랜베리아몬드+우유"
+      }
+    ]
+  },
+  {
+    "mealId": 48,
+    "mealDate": "2025-06-25T15:00:00.000+00:00",
+    "mealType": "조식",
+    "calorie": 1098.3,
+    "menus": [
+      {
+        "menuId": 267,
+        "menuName": "*스크램블에그+베이컨구이"
+      },
+      {
+        "menuId": 269,
+        "menuName": "*고래밥시리얼+우유"
+      },
+      {
+        "menuId": 270,
+        "menuName": "대파크림치즈베이글"
+      },
+      {
+        "menuId": 266,
+        "menuName": "굴소스베이컨볶음밥"
+      }
+    ]
+  },
+  {
+    "mealId": 49,
+    "mealDate": "2025-06-26T15:00:00.000+00:00",
+    "mealType": "조식",
+    "calorie": 660.9,
+    "menus": [
+      {
+        "menuId": 272,
+        "menuName": "*갈릭허니브레드"
+      },
+      {
+        "menuId": 273,
+        "menuName": "소시지구이/머스터드소스"
+      },
+      {
+        "menuId": 276,
+        "menuName": "시리얼&우유"
+      },
+      {
+        "menuId": 271,
+        "menuName": "#해물죽"
+      }
+    ]
+  },
+  {
+    "mealId": 50,
+    "mealDate": "2025-06-29T15:00:00.000+00:00",
+    "mealType": "조식",
+    "calorie": 755.8,
+    "menus": [
+      {
+        "menuId": 279,
+        "menuName": "돈육모듬장조림"
+      },
+      {
+        "menuId": 280,
+        "menuName": "-김실파무침"
+      },
+      {
+        "menuId": 278,
+        "menuName": "계란감자국"
+      }
+    ]
+  }
+]
