@@ -18,7 +18,7 @@ const RankTable = () => {
     const getMenuRank = async () => {
         try{
             const res = await customAxios.get(`${process.env.NEXT_PUBLIC_API_URL}/menu-rank`)
-            if(res) setRankList(res.data)
+            if(res.status === 200) setRankList(res.data)
         }catch(err){
             console.log(err);
         }
