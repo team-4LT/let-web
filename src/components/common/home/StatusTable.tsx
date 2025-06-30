@@ -27,7 +27,7 @@ const Statustable = () => {
             <div className="text-center text-darkgrey text-sm py-6">
                 {condition}을 거른 사람이
                 <br />
-                <span className="font-bold">총 {status && null}명 </span>
+                <span className="font-bold">총 {status}명 </span>
                 있습니다.
             </div>
         </div>
