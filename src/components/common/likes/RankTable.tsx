@@ -33,9 +33,9 @@ const RankTable = () => {
             <div className="flex justify-between">
                 <p className="font-semibold text-xl">메뉴 선호 순위</p>
                 <div>
-                    <button className="px-4 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-md hover:bg-gray-200">
+                    <div className="px-4 py-2 text-sm font-medium text-black bg-bg rounded hover:bg-grey">
                         전체
-                    </button>
+                    </div>
                 </div>
             </div>
             <div className="divide-y divide-grey">

@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+"use client";
+
+import React, { useEffect, useState } from 'react'
 import { RankBoxProps } from "@/types/props/likes/rankBoxProps"
 import { useGetChangeElement } from '@/hooks/likes/useGetChangeElement';
 import customAxios from '@/libs/axios/customAxios';
@@ -16,6 +18,10 @@ const RankBox = ({ rank, menuName, score, menuId }: RankBoxProps) => {
         console.log(err)
     }
   }
+
+  useEffect(() => {
+    getChange();
+  }, [menuId]);
 
   const change = useGetChangeElement(rankChange);
 
