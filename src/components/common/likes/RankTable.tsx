@@ -1,45 +1,56 @@
+"use client";
+
+import customAxios from "@/libs/axios/customAxios";
 import RankBox from "./RankBox";
 import RankMenu from "./RankMenu";
+import { useEffect, useState } from "react";
+
+interface RankList {
+    menuId: number;
+    menuName: string;
+    menuScore: number;
+    currentRank: number;
+}
 
 const RankTable = () => {
+    const [ rankList, setRankList ] = useState<RankList[]>();
+
+    const getMenuRank = async () => {
+        try{
+            const res = await customAxios.get(`${process.env.NEXT_PUBLIC_API_URL}/menu-rank`)
+            if(res.status === 200) setRankList(res.data)
+        }catch(err){
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        getMenuRank();
+      }, []);
+
     return (
         <div className="w-full flex flex-col gap-5 px-7.5 py-5 bg-white rounded">
             <div className="flex justify-between">
                 <p className="font-semibold text-xl">메뉴 선호 순위</p>
-                <div>buttons</div>
+                <div>
+                    <div className="px-4 py-2 text-sm font-medium text-black bg-bg rounded hover:bg-grey">
+                        전체
+                    </div>
+                </div>
             </div>
             <div className="divide-y divide-grey">
                 <RankMenu />
-                <RankBox
-                    rank={1}
-                    menuName="불고기 치즈 파니니"
-                    score={95}
-                    changeValue={3}
-                />
-                <RankBox
-                    rank={2}
-                    menuName="제육볶음"
-                    score={89}
-                    changeValue={-1}
-                />
-                <RankBox
-                    rank={3}
-                    menuName="에그타르트"
-                    score={85}
-                    changeValue={-1}
-                />
-                <RankBox
-                    rank={4}
-                    menuName="버섯 탕수육"
-                    score={82}
-                    changeValue={-1}
-                />
-                <RankBox
-                    rank={5}
-                    menuName="전남친 베이글"
-                    score={80}
-                    changeValue={0}
-                />
+                {
+                    rankList?.map((item:RankList)=>(
+                        <RankBox
+                            key={`${item.menuId}-${item.currentRank}`}
+                            rank={item.currentRank}
+                            menuName={item.menuName}
+                            score={item.menuScore}
+                            menuId={item.menuId}
+                        />
+                    ))
+                }
             </div>
         </div>
     );

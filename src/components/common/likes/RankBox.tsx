@@ -1,9 +1,27 @@
-import React from 'react'
+"use client";
+
+import React, { useEffect, useState } from 'react'
 import { RankBoxProps } from "@/types/props/likes/rankBoxProps"
 import { useGetChangeElement } from '@/hooks/likes/useGetChangeElement';
+import customAxios from '@/libs/axios/customAxios';
 
-const RankBox = ({ rank, menuName, score, changeValue }: RankBoxProps) => {
-  const change = useGetChangeElement(changeValue);
+const RankBox = ({ rank, menuName, score, menuId }: RankBoxProps) => {
+  const [ rankChange, setRankChange ] = useState<number>(0);
+
+  const getChange = async () => {
+    try{
+        const res = await customAxios.get(`${process.env.NEXT_PUBLIC_API_URL}/menu-rank/diff/${menuId}`)
+        if(res.status === 200) setRankChange(res.data)
+    }catch(err){
+        console.log(err)
+    }
+  }
+
+  useEffect(() => {
+    getChange();
+  }, [menuId]);
+
+  const change = useGetChangeElement(rankChange);
 
   return (
   <div className="flex gap-2.5 px-2.5 py-3.75 text-black text-base">
