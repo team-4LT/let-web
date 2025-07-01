@@ -8,6 +8,7 @@ export const useLogin = () => {
     const [id, setId] = useState<string>("");
     const [pw, setPw] = useState<string>("");
     const [isError, setError] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const login = async () => {
         const loginData = {
@@ -15,8 +16,10 @@ export const useLogin = () => {
             password: pw.trim(),
         };
         try {
+            setIsLoading(true);
             const res = await customAxios.post(`/auth/login`, loginData);
             if (res) {
+                setIsLoading(false);
                 if (res?.status === 200 || res?.status === 201) {
                     router.push("/");
                     setError(false);
@@ -35,7 +38,10 @@ export const useLogin = () => {
             }
         } catch (error) {
             console.error(error);
+            setError(true);
+            alert("아이디와 비밀번호를 확인해주십시오.");
         }
+        setIsLoading(false);
     };
-    return { id, setId, pw, setPw, login, isError };
+    return { id, setId, pw, setPw, login, isError, isLoading, setIsLoading };
 };

@@ -8,7 +8,7 @@ const Statistics = () => {
             <div className="w-full flex gap-5 pb-10">
                 <div className="w-[51rem] flex flex-col gap-5">
                     <StudentRatio />
-                    <div className="w-[51rem] min-h-90 flex gap-5">
+                    <div className="w-[51rem] min-h-90 max-h-100 flex gap-5">
                         <Checktable />
                         <MuchTable />
                     </div>

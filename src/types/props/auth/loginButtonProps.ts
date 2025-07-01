@@ -2,8 +2,5 @@ export interface LoginButtonProps {
     title: string;
     condition: boolean;
     onClick: () => void;
-<<<<<<< Updated upstream
+    isLoading: boolean;
 }
-=======
-}
->>>>>>> Stashed changes
