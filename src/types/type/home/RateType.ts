@@ -5,7 +5,11 @@ export const mealTypeMap: Record<string, string> = {
 };
 
 export interface RateType {
+    mealType: string;
     grade1Ration: number;
     grade2Ration: number;
     grade3Ration: number;
 }
+
+
+

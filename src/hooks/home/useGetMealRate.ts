@@ -1,16 +1,17 @@
 import customAxios from "@/libs/axios/customAxios";
+import { RateType } from "@/types/type/home/RateType";
+import { useQuery } from "@tanstack/react-query";
+
+const fetchMealRate = async (): Promise<RateType[]> => {
+    const res = await customAxios.get("/eater/meal-rate");
+    return res.data;
+};
 
 export const useGetMealRate = () => {
-    const getMealRate = async () => {
-        try {
-            const res = await customAxios.get(`/eater/meal-rate`);
-            if (res.status === 200) {
-                console.log(res.data);
-                return res.data;
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    };
-    return { getMealRate };
+    return useQuery({
+        queryKey: ["meal-rate"],
+        queryFn: fetchMealRate,
+        staleTime: 1000 * 60 * 5,
+        retry: 1,
+    });
 };

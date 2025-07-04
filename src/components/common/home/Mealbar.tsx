@@ -1,26 +1,21 @@
 "use client";
+
 import { useMealTime } from "@/hooks/mealbar/useMealTime";
 import { useGetDailyMenu } from "@/hooks/home/useGetDailyMenu";
-import { useEffect, useState } from "react";
+const mealTypeMap = {
+    아침: "조식",
+    점심: "중식",
+    저녁: "석식",
+} as const;
+type ConditionKey = keyof typeof mealTypeMap;
 
 const Mealbar = () => {
-    const { condition, date } = useMealTime();
-    const [meal, setMeal] = useState<{ menus: any[] }>();
-    const { getDailyMenu } = useGetDailyMenu();
+    const { condition, date } = useMealTime(); 
+    const { data: meal } = useGetDailyMenu(date);
 
-    useEffect(() => {
-        const fetchMeal = async () => {
-            const data = await getDailyMenu(date);
-            const selected =
-                data[condition === "아침" ? 0 : condition === "점심" ? 1 : 2];
-            setMeal(
-                selected?.menus
-                    ? selected
-                    : { menuName: ["등록된 급식이 없습니다."] }
-            );
-        };
-        fetchMeal();
-    }, [condition]);
+    const selected = meal?.find(
+        (m) => m.mealType === mealTypeMap[condition as ConditionKey]
+    );
 
     return (
         <div className="w-full bg-white h-16 px-5 py-3.5 flex justify-between items-center rounded-sm">
@@ -40,9 +35,14 @@ const Mealbar = () => {
                 </div>
             </div>
             <div className="w-2xs text-placeholder font-normal text-right text-sm break-words">
-                {meal?.menus?.map((item, index) => (
-                    <span key={index}>{item.menuName}, </span>
-                ))}
+                {selected?.menus?.length
+                    ? selected.menus.map((item, index) => (
+                          <span key={item.menuId}>
+                              {item.menuName}
+                              {index !== selected.menus.length - 1 && ", "}
+                          </span>
+                      ))
+                    : "식단 정보 없음"}
             </div>
         </div>
     );
