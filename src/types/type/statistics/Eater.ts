@@ -1,4 +1,4 @@
-type Eater = {
+export type Eater = {
     eaterId: number;
     user: {
         userId: number;

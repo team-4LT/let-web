@@ -6,12 +6,11 @@ import { useEffect, useState } from "react";
 
 const Statustable = () => {
     const { condition } = useMealTime();
-    const { getNotEater } = useGetNotEater();
     const [status, setStatus] = useState();
 
     useEffect(() => {
         const fetchStatus = async () => {
-            const data = await getNotEater();
+            const data = await useGetNotEater();
             setStatus(data);
         };
         fetchStatus();

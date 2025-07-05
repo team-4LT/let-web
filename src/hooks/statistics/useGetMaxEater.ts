@@ -1,17 +1,16 @@
-import customAxios from "@/libs/axios/customAxios"
+import customAxios from "@/libs/axios/customAxios";
+import { MealCard } from "@/types/type/statistics/MealCard";
 
-export const useGetMaxEater = () =>{
-    const getMaxEater = async() =>{
-        try{
-            const res = await customAxios.get('/mealMenu/max-eater')
-            if (res.status === 200){
-                console.log("데이터를 가져왔습니다.")
-            }else{
-            }
-            
-        }catch(err: any){
-            console.log(err)
+export const getMaxEater = async (condition: number): Promise<MealCard | null> => {
+    try {
+        const res = await customAxios.get(`/mealMenu/max-eater`);
+        if (res.status === 200) {
+            return res.data[condition]; 
+        } else {
+            return null;
         }
+    } catch (error) {
+        console.error(error);
+        return null;
     }
-    return {getMaxEater}
-}
+};

@@ -3,15 +3,15 @@ import { useEffect, useState } from "react";
 import Checkbutton from "./CheckButton";
 import Checklist from "./CheckList";
 import { useGetEater } from "@/hooks/statistics/useGetEater";
+import { Eater } from "@/types/type/statistics/Eater";
 
 const Checktable = () => {
     const [checkNum, setCheckNum] = useState<number>(1);
     const [eater, setEater] = useState<Eater[]>();
-    const { getEater } = useGetEater();
 
     useEffect(() => {
         const fetchEater = async () => {
-            const data = await getEater(checkNum);
+            const data = await useGetEater(checkNum);
             setEater(data);
         };
         fetchEater();

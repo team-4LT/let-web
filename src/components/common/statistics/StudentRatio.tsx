@@ -1,10 +1,20 @@
 "use client";
+
 import RatioBar from "./RatioBar";
-import { useGetMealRate } from "@/hooks/home/useGetMealRate";
+import { useEffect, useState } from "react";
+import { getMealRate } from "@/hooks/home/useGetMealRate";
 import { mealTypeMap, RateType } from "@/types/type/home/RateType";
 
 const StudentRatio = () => {
-    const { data: rate } = useGetMealRate();
+    const [rate, setRate] = useState<RateType[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await getMealRate();
+            if (result) setRate(result);
+        };
+        fetchData();
+    }, []);
 
     const getMealRatio = (mealType: string, grade: number): number => {
         const meal = rate?.find(

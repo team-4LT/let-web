@@ -1,27 +1,27 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Mealcard from "./MealCard";
+import { getMaxEater } from "@/hooks/statistics/useGetMaxEater";
+import { MealCard } from "@/types/type/statistics/MealCard";
 
 const MuchTable = () => {
-    const meal: string[] = [
-        "*현미밥",
-        "물만두국",
-        "브로콜리소시지볶음",
-        "*명엽채튀김",
-        "배추김치",
-        "*치즈에그타르트",
-    ];
     const [time, setTime] = useState(1);
-    const decreaseTime = () => {
-        setTime((prev) => (time !== 0 ? prev - 1 : 2));
-    };
+    const [meal, setMeal] = useState<MealCard | null>(null);
 
-    const increaseTime = () => {
-        setTime((prev) => (time !== 2 ? prev + 1 : 0));
-    };
+    const decreaseTime = () => setTime((prev) => (prev !== 0 ? prev - 1 : 2));
+    const increaseTime = () => setTime((prev) => (prev !== 2 ? prev + 1 : 0));
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await getMaxEater(time);
+             setMeal(result);
+        };
+        fetchData();
+    }, [time]);
 
     return (
-        <div className="w-full h-full px-7 py-5 bg-white flex flex-col items-center gap-6 rounded-sm"
+        <div
+            className="w-full h-full px-7 py-5 bg-white flex flex-col items-center gap-6 rounded-sm"
             style={{ width: `${53.125 / 2 - 1.25 / 2}rem` }}
         >
             <div className="w-full flex justify-between items-center">
@@ -30,7 +30,7 @@ const MuchTable = () => {
                 </div>
                 <div
                     className="flex w-14 h-6 rounded-sm justify-center items-center 
-            text-xs font-semibold bg-second text-white"
+                                text-xs font-semibold bg-second text-white"
                 >
                     12일
                 </div>
@@ -43,7 +43,7 @@ const MuchTable = () => {
                 />
                 <Mealcard
                     time={time === 0 ? "아침" : time === 1 ? "점심" : "저녁"}
-                    meal={meal}
+                    meal={meal?.menus ?? null}
                 />
                 <img
                     src="/assets/arrow.svg"
@@ -52,7 +52,8 @@ const MuchTable = () => {
                 />
             </div>
             <div className="text-darkgrey text-base font-medium">
-                전체 식사자 : <span className="font-bold">192</span>명
+                전체 식사자 :{" "}
+                <span className="font-bold">{meal ? meal?.eaterCount : 0}</span>명
             </div>
         </div>
     );
