@@ -1,22 +1,17 @@
 import { LoginButtonProps } from "@/types/props/auth/loginButtonProps";
 
-const LoginButton = ({ title, condition }: LoginButtonProps) => {
-  return (
-    <div
-      className={`w-full flex items-center justify-center py-2 h-10 text-white rounded-sm cursor-pointer text-base ${
-        condition ? "" : "bg-grey"
-      }`}
-      style={
-        condition
-          ? {
-              background: "linear-gradient(180deg, #FF3939 0%, #FF8957 100%)",
-            }
-          : undefined
-      }
-    >
-      {title}
-    </div>
-  );
+const LoginButton = ({ title, condition, onClick, isLoading }: LoginButtonProps) => {
+    return (
+        <button
+            className={`cursor-pointer w-full h-10 bg-main text-white text-sm rounded-sm ${
+                !condition ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            onClick={() => condition && onClick()}
+            disabled={!condition}
+        >
+            {isLoading ? "로딩 중..." : title}
+        </button>
+    );
 };
 
 export default LoginButton;

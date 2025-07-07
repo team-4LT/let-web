@@ -1,4 +1,6 @@
 export interface LoginButtonProps {
     title: string;
-    condition: boolean | string;
+    condition: boolean;
+    onClick: () => void;
+    isLoading: boolean;
 }

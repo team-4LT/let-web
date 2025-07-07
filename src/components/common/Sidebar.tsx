@@ -1,6 +1,7 @@
 'use client'
 
 import { useCustomRouter } from "@/hooks/useCustomRouter";
+import { cookieManager } from "@/utilities/cookie";
 import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
@@ -8,6 +9,12 @@ const Sidebar = () => {
     const pathname = usePathname();
     const condition = (currentPath: string) =>{
         return pathname === currentPath ? {backgroundColor : "#FE6B4B", color : "white"} : {background:"white", color:"#303030"}
+    }
+    const toggleLogout = () =>{
+        alert("로그아웃 되었습니다.")
+        cookieManager.delete("ACCESS_TOKEN_KEY");
+        cookieManager.delete("REFRESH_TOKEN_KEY");
+        router.push("/login")
     }
 
     return (
@@ -26,7 +33,7 @@ const Sidebar = () => {
             style={condition("/allergies")}>급식표 & 알러지</div>
             
             <div className="w-full border-t-1 py-4 border-t-grey">
-                <div className="pl-2 text-main cursor-pointer">로그아웃</div>
+                <div className="pl-2 text-main cursor-pointer" onClick={toggleLogout}>로그아웃</div>
             </div>
         </div>
     );

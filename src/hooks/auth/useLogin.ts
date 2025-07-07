@@ -1,5 +1,5 @@
+import customAxios from "@/libs/axios/customAxios";
 import { cookieManager } from "@/utilities/cookie";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -8,31 +8,40 @@ export const useLogin = () => {
     const [id, setId] = useState<string>("");
     const [pw, setPw] = useState<string>("");
     const [isError, setError] = useState<boolean>(false);
-    
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+
     const login = async () => {
-        const { data } = await axios.post(
-            `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
-            {
-                id: id,
-                pw: pw,
+        const loginData = {
+            username: id.trim(),
+            password: pw.trim(),
+        };
+        try {
+            setIsLoading(true);
+            const res = await customAxios.post(`/auth/login`, loginData);
+            if (res) {
+                setIsLoading(false);
+                if (res?.status === 200 || res?.status === 201) {
+                    router.push("/");
+                    setError(false);
+                    alert("로그인 완료.");
+                    const newAccessToken = res.data.accessToken;
+                    const newRefreshToken = res.data.refreshToken;
+                    await cookieManager.set("ACCESS_TOKEN_KEY", newAccessToken); // 쿠키 저장하는 거
+                    await cookieManager.set(
+                        "REFRESH_TOKEN_KEY",
+                        newRefreshToken
+                    );
+                } else {
+                    console.log("인증 실패", res);
+                    setError(true);
+                }
             }
-        );
-        if (data) {
-            if (data?.data.res === 200) {
-                router.push("/");
-                setError(false);
-                alert("로그인 완료.");
-                const newAccessToken = data.data.accessToken;
-                const newRefreshToken = data.data.refreshToken;
-                await cookieManager.set("ACCESS_TOKEN_KEY", newAccessToken);
-                await cookieManager.set("REFRESH_TOKEN_KEY", newRefreshToken);
-            } else {
-                console.log("인증 실패", data);
-                setError(true);
-            }
-        } else {
-            console.log("데이터가 없습니다.");
+        } catch (error) {
+            console.error(error);
+            setError(true);
+            alert("아이디와 비밀번호를 확인해주십시오.");
         }
+        setIsLoading(false);
     };
-    return { id, setId, pw, setPw, login, isError };
+    return { id, setId, pw, setPw, login, isError, isLoading, setIsLoading };
 };

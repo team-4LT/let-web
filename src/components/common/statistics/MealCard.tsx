@@ -9,8 +9,12 @@ const Mealcard = ({meal, time}:MealCardType) => {
       </div>
         <div className="text-center">
             {/* 메뉴 출력 */}
-            {meal.map((item:string, index:number) => {
-              return <div className="text-darkgrey text-base" key={index}>{item}</div>;
+            {meal?.map((item:any) => {
+              return (
+                <div className="text-darkgrey text-base" key={item.menuId}>
+                  {item.menuName}
+                </div>
+              );
             })}
         </div>
     </div>
