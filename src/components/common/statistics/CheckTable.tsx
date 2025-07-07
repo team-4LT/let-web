@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Checkbutton from "./CheckButton";
 import Checklist from "./CheckList";
-import { useGetEater } from "@/hooks/statistics/useGetEater";
+import { getEater } from "@/hooks/statistics/GetEater";
 import { Eater } from "@/types/type/statistics/Eater";
 
 const Checktable = () => {
@@ -11,7 +11,7 @@ const Checktable = () => {
 
     useEffect(() => {
         const fetchEater = async () => {
-            const data = await useGetEater(checkNum);
+            const data = await getEater(checkNum);
             setEater(data);
         };
         fetchEater();

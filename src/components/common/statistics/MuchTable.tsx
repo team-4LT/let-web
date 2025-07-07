@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Mealcard from "./MealCard";
-import { getMaxEater } from "@/hooks/statistics/useGetMaxEater";
+import { getMaxEater } from "@/hooks/statistics/GetMaxEater";
 import { MealCard } from "@/types/type/statistics/MealCard";
 
 const MuchTable = () => {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetNotEater } from "@/hooks/home/useGetNotEater";
+import { getNotEater } from "@/hooks/home/GetNotEater";
 import { useMealTime } from "@/hooks/mealbar/useMealTime";
 import { useEffect, useState } from "react";
 
@@ -10,7 +10,7 @@ const Statustable = () => {
 
     useEffect(() => {
         const fetchStatus = async () => {
-            const data = await useGetNotEater();
+            const data = await getNotEater();
             setStatus(data);
         };
         fetchStatus();

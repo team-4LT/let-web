@@ -2,7 +2,7 @@
 
 import RatioBar from "./RatioBar";
 import { useEffect, useState } from "react";
-import { getMealRate } from "@/hooks/home/useGetMealRate";
+import { getMealRate } from "@/hooks/statistics/GetMealRate";
 import { mealTypeMap, RateType } from "@/types/type/home/RateType";
 
 const StudentRatio = () => {

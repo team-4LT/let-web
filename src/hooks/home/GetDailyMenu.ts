@@ -1,16 +1,15 @@
 import customAxios from "@/libs/axios/customAxios";
 
-export const useGetNotEater = async () => {
+export const getDailyMenu = async (date: String) => {
     try {
-        const res = await customAxios.get(`/eater/not-eaten`);
+        const res = await customAxios.get(`/mealMenu/daily/${date}`);
         if (res.status === 200) {
-            console.log("데이터 성공", res.data);
             return res.data;
         } else {
             return null;
         }
     } catch (error) {
-        console.error("에러 발색", error);
+        console.log(error);
         return null;
     }
 };
