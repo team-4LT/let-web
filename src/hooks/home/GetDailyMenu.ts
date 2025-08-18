@@ -4,7 +4,7 @@ export const getDailyMenu = async (date: String) => {
     try {
         const res = await customAxios.get(`/mealMenu/daily/${date}`);
         if (res.status === 200) {
-            return res.data;
+            return res.data.data;
         } else {
             return null;
         }
