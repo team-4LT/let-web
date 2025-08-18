@@ -11,14 +11,18 @@ import { getMealData } from '@/hooks/allergies/useGetMealData';
 const Calendar = () => {
   const [ mealData, setMealData ] = useState<MealData[]>();
   const [ selectedPeriod, setSelectedPeriod ] = useState<'아침' | '점심' | '저녁'>('아침');
-  const [ selectedDate, setSelectedDate ] = useState(1)
+  const [ selectedDate, setSelectedDate ] = useState<number>()
   const { setSelectedMeal } = selectedMealStore();
   const { year, month, startWeek, daysThisMonth } = useGetThisMonthProps();
 
   useEffect(()=>{
     const fetchData = async () => {
       const result = await getMealData(selectedPeriod);
-      if (result) setMealData(result);
+      if (result) {
+        setMealData(result);
+        setSelectedMeal(parseInt(result[0].mealDate.slice(8, 10), 10))
+        setSelectedDate(parseInt(result[0].mealDate.slice(8, 10), 10))
+      }
     };
     fetchData();
   }, [selectedPeriod])

@@ -16,7 +16,7 @@ const AllergieButtons = () => {
       const result = await getAllergies(selectedMeal);
       if (result) setSelectedAllergies(result);
     };
-    fetchData();
+    if(selectedMeal>=0) fetchData();
   }, [selectedMeal])
 
   return (

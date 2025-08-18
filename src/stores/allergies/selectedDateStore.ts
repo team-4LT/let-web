@@ -5,6 +5,6 @@ interface SelectedMeal {
   setSelectedMeal : (val : number) => void;
 }
 export const selectedMealStore = create<SelectedMeal>((set)=>({
-  selectedMeal : 0,
+  selectedMeal : -1,
   setSelectedMeal : (selectedMeal) => set({selectedMeal})
 }))
