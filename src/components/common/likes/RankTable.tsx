@@ -17,8 +17,8 @@ const RankTable = () => {
 
     const getMenuRank = async () => {
         try{
-            const res = await customAxios.get(`${process.env.NEXT_PUBLIC_API_URL}/menu-rank`)
-            if(res.status === 200) setRankList(res.data)
+            const res = await customAxios.get(`/menu-rank`)
+            if(res.status === 200) setRankList(res.data.data)
         }catch(err){
             console.log(err);
         }
@@ -41,7 +41,8 @@ const RankTable = () => {
             <div className="divide-y divide-grey">
                 <RankMenu />
                 {
-                    rankList?.map((item:RankList)=>(
+                    rankList?.filter((item:RankList)=>item.currentRank>0) // 순위 0인거는 아직 배정 안된 메뉴
+                             .map((item:RankList)=>(
                         <RankBox
                             key={`${item.menuId}-${item.currentRank}`}
                             rank={item.currentRank}
