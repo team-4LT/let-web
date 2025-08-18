@@ -50,7 +50,7 @@ const Checktable = () => {
                         />
                     ))
                 ) : (
-                    <div className="text-base text-grey">
+                    <div className="text-base text-grey w-full flex justify-center">
                         데이터가 없습니다.
                     </div>
                 )}
