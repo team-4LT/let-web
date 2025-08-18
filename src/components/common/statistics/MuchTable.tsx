@@ -14,7 +14,7 @@ const MuchTable = () => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await getMaxEater(time);
-             setMeal(result);
+            setMeal(result);
         };
         fetchData();
     }, [time]);
@@ -28,10 +28,7 @@ const MuchTable = () => {
                 <div className="font-semibold text-black text-xl ">
                     이번 달 가장 식사자가 많은 날
                 </div>
-                <div
-                    className="flex w-14 h-6 rounded-sm justify-center items-center 
-                                text-xs font-semibold bg-second text-white"
-                >
+                <div className="flex w-14 h-6 rounded-sm justify-center items-center text-xs font-semibold bg-second text-white">
                     12일
                 </div>
             </div>
@@ -53,7 +50,8 @@ const MuchTable = () => {
             </div>
             <div className="text-darkgrey text-base font-medium">
                 전체 식사자 :{" "}
-                <span className="font-bold">{meal ? meal?.eaterCount : 0}</span>명
+                <span className="font-bold">{meal ? meal?.eaterCount : 0}</span>
+                명
             </div>
         </div>
     );

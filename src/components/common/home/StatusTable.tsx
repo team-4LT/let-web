@@ -10,8 +10,10 @@ const Statustable = () => {
 
     useEffect(() => {
         const fetchStatus = async () => {
-            const data = await getNotEater();
-            setStatus(data);
+            const res = await getNotEater();
+            if (res && res.data !== undefined) {
+                setStatus(res.data);
+            }
         };
         fetchStatus();
     }, []);
