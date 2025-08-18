@@ -1,10 +1,10 @@
 import { create } from 'zustand'
 
-interface SelectedDate {
-  selectedDate : number
-  setSelectedDate : (val : number) => void;
+interface SelectedMeal {
+  selectedMeal : number
+  setSelectedMeal : (val : number) => void;
 }
-export const selectedDateStore = create<SelectedDate>((set)=>({
-  selectedDate : 1,
-  setSelectedDate : (selectedDate) => set({selectedDate})
+export const selectedMealStore = create<SelectedMeal>((set)=>({
+  selectedMeal : 0,
+  setSelectedMeal : (selectedMeal) => set({selectedMeal})
 }))

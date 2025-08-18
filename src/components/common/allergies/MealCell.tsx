@@ -10,7 +10,7 @@ const MealCell = (props:MealCellProps) => {
     >
       <div className='text-black text-sm font-medium'>{mealDate}</div>
       <div className='flex flex-col justify-center gap-1.75 mt=1.75'>
-        <div className='text-second text-xs font-medium'>{calorie}</div>
+        <div className='text-second text-xs font-medium'>{calorie? `${calorie} Kcal`: ''}</div>
         {menus? menus.map((menu) => (
           <div key={menu.menuId}>
             {menu.menuName}
