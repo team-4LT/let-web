@@ -4,7 +4,7 @@ export const getEater = async (grade: number) => {
     try {
         const res = await customAxios.get(`/eater/${grade}`);
         if (res.status === 200) {
-            return res.data;
+            return res.data.data;
         } else {
             return null;
         }

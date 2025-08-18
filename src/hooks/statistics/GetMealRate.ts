@@ -5,7 +5,7 @@ export const getMealRate = async (): Promise<RateType[] | null> => {
     try {
         const res = await customAxios.get("/eater/meal-rate");
         if (res.status === 200) {
-            return res.data;
+            return res.data.data;
         } else {
             return null;
         }
