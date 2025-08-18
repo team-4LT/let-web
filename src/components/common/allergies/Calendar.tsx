@@ -53,7 +53,7 @@ const Calendar = () => {
       ))}
     </div>
 
-      <div className='text-black text-lg'>
+      <div className='text-black text-lg font-semibold py-5 flex justify-center'>
         {year}년 {month + 1}월
       </div>
 
