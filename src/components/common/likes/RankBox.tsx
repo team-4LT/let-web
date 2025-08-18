@@ -10,8 +10,8 @@ const RankBox = ({ rank, menuName, score, menuId }: RankBoxProps) => {
 
   const getChange = async () => {
     try{
-        const res = await customAxios.get(`${process.env.NEXT_PUBLIC_API_URL}/menu-rank/diff/${menuId}`)
-        if(res.status === 200) setRankChange(res.data)
+        const res = await customAxios.get(`/menu-rank/diff/${menuId}`)
+        if(res.status === 200) setRankChange(res.data.data)
     }catch(err){
         console.log(err)
     }
