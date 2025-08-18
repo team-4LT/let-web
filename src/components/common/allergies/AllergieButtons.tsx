@@ -2,30 +2,21 @@
 
 import { selectedMealStore } from '@/stores/allergies/selectedDateStore';
 import { allergiesStore } from '@/stores/allergies/allergiesStroe';
-import customAxios from '@/libs/axios/customAxios';
 import { useEffect, useState } from 'react';
-
-interface AllergieData {
-  allergyId: number;
-  allergyName: string;
-}
+import { AllergieData } from '@/types/props/allergies/allergieData';
+import { getAllergies } from "@/hooks/allergies/useGetAllerdies";
 
 const AllergieButtons = () => {
   const { selectedMeal } = selectedMealStore();
   const { allergies } = allergiesStore(); 
   const [ selectedAllergies, setSelectedAllergies ] = useState<AllergieData[]>();
 
-  const getAllergies = async() => {
-    try{
-      const res = await customAxios.get(`/menuAllergy/${selectedMeal}`)
-      if(res.status===200) setSelectedAllergies(res.data.data)
-    }catch(err:any){
-      console.error(`알러지 정보 불러오기 실패: ${err}`)
-    }
-  }
-
   useEffect(()=>{
-    getAllergies();
+    const fetchData = async () => {
+      const result = await getAllergies(selectedMeal);
+      if (result) setSelectedAllergies(result);
+    };
+    fetchData();
   }, [selectedMeal])
 
   return (

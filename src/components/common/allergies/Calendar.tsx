@@ -3,49 +3,36 @@
 import CalendarHeader from './CalendarHeader'
 import { useGetThisMonthProps } from '@/hooks/allergies/useGetThisMonthCalendar'
 import MealCell from './MealCell'
-import customAxios from '@/libs/axios/customAxios';
 import { useEffect, useState } from 'react';
 import { selectedMealStore } from '@/stores/allergies/selectedDateStore';
-
-interface MealData {
-  mealId: number;
-  mealDate: string;
-  mealType: string;
-  calorie: number;
-  menus: Menu[];
-}
- 
-interface Menu {
-  menuId: number;
-  menuName: string;
-}
+import { MealData } from '@/types/props/allergies/mealData';
+import { getMealData } from '@/hooks/allergies/useGetMealData';
 
 const Calendar = () => {
   const [ mealData, setMealData ] = useState<MealData[]>();
   const [ selectedPeriod, setSelectedPeriod ] = useState<'아침' | '점심' | '저녁'>('아침');
   const [ selectedDate, setSelectedDate ] = useState(1)
   const { setSelectedMeal } = selectedMealStore();
-  const { year, month } = useGetThisMonthProps();
-
-  const getMealdata = async() => {
-    try{
-      const period =
-        selectedPeriod==='아침'
-          ? '조식'
-          : selectedPeriod==='점심'
-          ? '중식'
-          : '석식';
-
-      const res = await customAxios.get(`/mealMenu/${period}?allergyIds=1%2C2%2C5`)
-      if(res.status==200) setMealData(res.data.data)
-    }catch(err:any){
-      console.error(`식단 데이터 불러오기 실패: ${err}`)
-    }
-  }
+  const { year, month, startWeek, daysThisMonth } = useGetThisMonthProps();
 
   useEffect(()=>{
-    getMealdata();
+    const fetchData = async () => {
+      const result = await getMealData(selectedPeriod);
+      if (result) setMealData(result);
+    };
+    fetchData();
   }, [selectedPeriod])
+
+  const totalCells = [
+    ...Array(startWeek).fill(null), // 앞에 빈칸
+    ...daysThisMonth,
+  ];
+
+  const weeks: (number | null)[][] = [];
+  for (let i = 0; i < totalCells.length; i += 7) {
+    weeks.push(totalCells.slice(i, i + 7));
+  }
+
 
   return (
     <div className='flex flex-col px-6.25 py-5 bg-white rounded'>
