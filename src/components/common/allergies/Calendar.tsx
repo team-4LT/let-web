@@ -1,39 +1,22 @@
 "use client";
 
 import CalendarHeader from './CalendarHeader'
-import sampleMealData from '@/data/sampleMeal.json'
 import { useGetThisMonthProps } from '@/hooks/allergies/useGetThisMonthCalendar'
-import MealCell from './MealCell'
-import { selectedDateStore } from '@/stores/allergies/selectedDateStore';
-import { useFormatDate } from '@/hooks/allergies/useFormatDate'
- 
-const Calendar = () => {
-  const data = sampleMealData;
-  const { year, month, startWeek, daysThisMonth } = useGetThisMonthProps();
-  const {selectedDate, setSelectedDate} = selectedDateStore();
-  
-  const getMealByDate = (day: number) => {
-    const formattedDate = useFormatDate(new Date(year, month, day));
-  
-    return data.find(meal => meal.mealDate.slice(0, 10) === formattedDate);
-  }
-  
-  const getCalorie = (day: number) => {
-    const meal = getMealByDate(day);
-    return meal?.calorie; 
-  }
-  
-  const getMenu = (day: number) => {
-    const meal = getMealByDate(day);
-    return meal?.menus;
-  }
+import { useEffect, useState } from 'react';
+import { selectedMealStore } from '@/stores/allergies/selectedDateStore';
+import { MealData } from '@/types/props/allergies/mealData';
+import { getMealData } from '@/hooks/allergies/useGetMealData';
+import CalendarCell from './CalendarCell';
 
-  const onClickMealCell = (day: number) => {
-    setSelectedDate(day);
-  }
-  
+const Calendar = () => {
+  const [ mealData, setMealData ] = useState<MealData[]>([]);
+  const [ selectedPeriod, setSelectedPeriod ] = useState<'아침' | '점심' | '저녁'>('아침');
+  const [ selectedDate, setSelectedDate ] = useState<number>()
+  const { setSelectedMeal } = selectedMealStore();
+  const { year, month, startWeek, daysThisMonth } = useGetThisMonthProps();
+
   const totalCells = [
-    ...Array(startWeek).fill(null), // 앞에 빈칸
+    ...Array(startWeek).fill(null), 
     ...daysThisMonth,
   ];
 
@@ -42,43 +25,70 @@ const Calendar = () => {
     weeks.push(totalCells.slice(i, i + 7));
   }
 
+  const mealMap = new Map<number, MealData>();
+  mealData.forEach(meal => {
+    const day = parseInt(meal.mealDate.slice(8, 10), 10); //날짜만 추출
+    mealMap.set(day, meal);
+  });
+
+  useEffect(()=>{
+    const fetchData = async () => {
+      const result = await getMealData(selectedPeriod);
+      if (result) {
+        setMealData(result);
+        setSelectedMeal(parseInt(result[0].mealDate.slice(8, 10), 10));
+        setSelectedDate(parseInt(result[0].mealDate.slice(8, 10), 10));
+      }
+    };
+    fetchData();
+  }, [selectedPeriod]);
+
   return (
     <div className='flex flex-col px-6.25 py-5 bg-white rounded'>
-      <div>button</div>
 
-      <div className='text-black text-lg'>
+      <div className="flex gap-2">
+        {['아침', '점심', '저녁'].map((period) => (
+          <div
+            key={period}
+            className={`flex justify-center py-1 w-14 text-xs font-medium rounded cursor-pointer ${
+              selectedPeriod === period
+                ? 'bg-second text-white'
+                : 'bg-bg text-black hover:bg-gray-300' 
+            }`}
+            onClick={() => setSelectedPeriod(period as '아침' | '점심' | '저녁')} 
+          >
+            {period}
+          </div>
+        ))}
+      </div>
+
+      <div className='text-black text-lg font-semibold py-5 flex justify-center'>
         {year}년 {month + 1}월
       </div>
 
       <div className='flex flex-col gap-1.25'>
         <CalendarHeader />
-          {weeks.map((week, weekIndex) => (
-            <div key={weekIndex} className="grid grid-cols-7 justify-center gap-1.25">
-              {week.map((day, index) =>
-                day === null ? (
-                  <MealCell
-                    key={`empty-${index}`}
-                    isSelected={false}
-                    mealId={-index}
-                    mealDate={''}
-                  />
-                ) : (
-                  <MealCell
-                    key={day}
-                    isSelected={selectedDate === day}
-                    mealId={day}
-                    mealDate={day.toString()}
-                    calorie={getCalorie(day)}
-                    menus={getMenu(day)}
-                    onClick={() => onClickMealCell(day)}
-                  />
-                )
-              )}
-            </div>
-          ))}
-        </div>
+        
+        {weeks.map((week, weekIdx) => (
+          <div key={weekIdx} className="grid grid-cols-7 justify-center gap-1.25">
+            {week.map((day, index) => (
+              <CalendarCell
+                key={`${weekIdx}-${index}`}
+                day={day}
+                index={index}
+                weekIdx={weekIdx}
+                month={month}
+                selectedDate={selectedDate}
+                mealMap={mealMap}
+                setSelectedDate={setSelectedDate}
+                setSelectedMeal={setSelectedMeal}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default Calendar
+export default Calendar;

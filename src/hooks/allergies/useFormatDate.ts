@@ -1,1 +1,0 @@
-export const useFormatDate = (date: Date) => date.toLocaleDateString('sv-SE');
