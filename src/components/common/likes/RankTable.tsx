@@ -13,20 +13,28 @@ interface RankList {
 }
 
 const RankTable = () => {
-    const [ rankList, setRankList ] = useState<RankList[]>();
+    const [rankList, setRankList] = useState<RankList[]>();
+    const [isAsc, setIsAsc] = useState(true); // 정렬 기준 (true: 오름차순, false: 내림차순)
 
     const getMenuRank = async () => {
-        try{
-            const res = await customAxios.get(`/menu-rank`)
-            if(res.status === 200) setRankList(res.data.data)
-        }catch(err){
+        try {
+            const res = await customAxios.get(`/menu-rank`);
+            if (res.status === 200) setRankList(res.data.data);
+        } catch (err) {
             console.log(err);
         }
-    }
+    };
 
     useEffect(() => {
         getMenuRank();
-      }, []);
+    }, []);
+
+    // 정렬된 rankList 만들기
+    const sortedList = rankList
+        ?.filter((item: RankList) => item.currentRank > 0)
+        .sort((a, b) =>
+            isAsc ? a.currentRank - b.currentRank : b.currentRank - a.currentRank
+        );
 
     return (
         <div className="w-full flex flex-col gap-5 px-7.5 py-5 bg-white rounded">
@@ -39,19 +47,16 @@ const RankTable = () => {
                 </div>
             </div>
             <div className="divide-y divide-grey">
-                <RankMenu />
-                {
-                    rankList?.filter((item:RankList)=>item.currentRank>0) // 순위 0인거는 아직 배정 안된 메뉴
-                             .map((item:RankList)=>(
-                        <RankBox
-                            key={`${item.menuId}-${item.currentRank}`}
-                            rank={item.currentRank}
-                            menuName={item.menuName}
-                            score={item.menuScore}
-                            menuId={item.menuId}
-                        />
-                    ))
-                }
+                <RankMenu isAsc={isAsc} toggleSort={() => setIsAsc(!isAsc)} />
+                {sortedList?.map((item: RankList) => (
+                    <RankBox
+                        key={`${item.menuId}-${item.currentRank}`}
+                        rank={item.currentRank}
+                        menuName={item.menuName}
+                        score={item.menuScore}
+                        menuId={item.menuId}
+                    />
+                ))}
             </div>
         </div>
     );
