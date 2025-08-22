@@ -1,8 +1,12 @@
+import { useGetThisMonthProps } from "@/hooks/allergies/useGetThisMonthCalendar";
+
 const Feedbacktable = () => {
+    const { month } = useGetThisMonthProps();
+
     return (
         <div className="w-fill p-5 h-72 bg-white flex flex-col rounded-sm">
             <div className="font-semibold text-black text-base">
-                4월 식단 피드백
+                {month + 1}월 식단 피드백
             </div>
             <div className="w-fill text-darkgrey py-6 text-sm font-normal">
                 전반적으로 균형 잡힌 식단이에요. 채소 섭취도 충분해서 비타민과

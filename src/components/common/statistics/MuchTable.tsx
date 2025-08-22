@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import Mealcard from "./MealCard";
 import { getMaxEater } from "@/hooks/statistics/GetMaxEater";
 import { MealCard } from "@/types/type/statistics/MealCard";
+import Mealcard from "./MealCard";
 
 const MuchTable = () => {
     const [time, setTime] = useState(1);
@@ -24,6 +24,7 @@ const MuchTable = () => {
             className="w-full h-full px-7 py-5 bg-white flex flex-col items-center gap-6 rounded-sm"
             style={{ width: `${53.125 / 2 - 1.25 / 2}rem` }}
         >
+            {/* 여기가 wrap */}
             <div className="w-full flex justify-between items-center">
                 <div className="font-semibold text-black text-xl ">
                     이번 달 가장 식사자가 많은 날
