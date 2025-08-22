@@ -40,11 +40,6 @@ const RankTable = () => {
         <div className="w-full flex flex-col gap-5 px-7.5 py-5 bg-white rounded">
             <div className="flex justify-between">
                 <p className="font-semibold text-xl">메뉴 선호 순위</p>
-                <div>
-                    <div className="px-4 py-2 text-sm font-medium text-black bg-bg rounded hover:bg-grey">
-                        전체
-                    </div>
-                </div>
             </div>
             <div className="divide-y divide-grey">
                 <RankMenu isAsc={isAsc} toggleSort={() => setIsAsc(!isAsc)} />
