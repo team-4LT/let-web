@@ -19,10 +19,10 @@ const Checktable = () => {
 
     return (
         <div
-            className="w-full h-full px-7 py-5 bg-white flex flex-col items-center gap-6 rounded-sm overflow-y-auto"
+            className="w-full h-full px-7 bg-white flex flex-col items-center gap-6 rounded-sm overflow-y-auto relative"
             style={{ width: `${53.125 / 2 - 1.25 / 2}rem` }}
         >
-            <div className="w-full flex justify-between items-center">
+            <div className="w-full py-5 flex justify-between items-center sticky top-0 bg-white">
                 <div className="font-semibold text-black text-xl">
                     식사자 조회
                 </div>
