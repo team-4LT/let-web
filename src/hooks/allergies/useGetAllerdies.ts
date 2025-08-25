@@ -6,6 +6,7 @@ export const getAllergies = async(selectedMeal:number) => {
     return res.data.data
   }catch(err:any){
     console.error(`알러지 정보 불러오기 실패: ${err}`)
+    alert('네트워크 오류! 다시 시도해주세요!')
     return null
   }
 }
