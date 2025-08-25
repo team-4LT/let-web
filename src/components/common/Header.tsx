@@ -7,8 +7,8 @@ const Header = () => {
 
     const toggleLogout = () =>{
         alert("로그아웃 되었습니다.")
-        cookieManager.delete("ACCESS_TOKEN_KEY");
-        cookieManager.delete("REFRESH_TOKEN_KEY");
+        cookieManager.delete("accessToken");
+        cookieManager.delete("refreshToken");
         router.push("/login")
     }
 
