@@ -1,40 +1,27 @@
 "use client";
 
-import customAxios from "@/libs/axios/customAxios";
 import RankBox from "./RankBox";
 import RankMenu from "./RankMenu";
 import { useEffect, useState } from "react";
-
-interface RankList {
-    menuId: number;
-    menuName: string;
-    menuScore: number;
-    currentRank: number;
-}
+import { RankInfo, RankList } from "@/types/type/likes/rankInfo";
+import useGetMenuRank from "@/hooks/likes/useGetMenuRank";
+import PageHandler from "./PageHandler";
 
 const RankTable = () => {
-    const [rankList, setRankList] = useState<RankList[]>();
-    const [isAsc, setIsAsc] = useState(true); // 정렬 기준 (true: 오름차순, false: 내림차순)
+    const [ isAsc, setIsAsc ] = useState(true); // 정렬 기준 (true: 오름차순, false: 내림차순)
+    const [ isReverse, setIsReverse ] = useState(false);
 
-    const getMenuRank = async () => {
-        try {
-            const res = await customAxios.get(`/menu-rank`);
-            if (res.status === 200) setRankList(res.data.data);
-        } catch (err) {
-            console.log(err);
-        }
-    };
+    const [ rankInfo, setRankInfo ] = useState<RankInfo>();
+    const [ nowPage, setNowPage ] = useState(1);
 
     useEffect(() => {
-        getMenuRank();
-    }, []);
-
-    // 정렬된 rankList 만들기
-    const sortedList = rankList
-        ?.filter((item: RankList) => item.currentRank > 0)
-        .sort((a, b) =>
-            isAsc ? a.currentRank - b.currentRank : b.currentRank - a.currentRank
-        );
+        const fetchData = async (nowPage:number, isReverse:boolean) => {
+            const result = await useGetMenuRank(nowPage, isReverse);
+            if(result) setRankInfo(result);
+            else alert('급식 랭킹 불러오기 실패!')
+        }
+        fetchData(nowPage, isReverse);
+    }, [nowPage, isReverse]);
 
     return (
         <div className="w-full flex flex-col gap-5 px-7.5 py-5 bg-white rounded">
@@ -42,8 +29,14 @@ const RankTable = () => {
                 <p className="font-semibold text-xl">메뉴 선호 순위</p>
             </div>
             <div className="divide-y divide-grey">
-                <RankMenu isAsc={isAsc} toggleSort={() => setIsAsc(!isAsc)} />
-                {sortedList?.map((item: RankList) => (
+                <RankMenu 
+                    isAsc={isAsc} 
+                    toggleSort={() => {
+                        setIsAsc(!isAsc)
+                        setIsReverse(!isReverse)
+                    }} 
+                />
+                {rankInfo?.menus.map((item: RankList) => (
                     <RankBox
                         key={`${item.menuId}-${item.currentRank}`}
                         rank={item.currentRank}
@@ -53,6 +46,11 @@ const RankTable = () => {
                     />
                 ))}
             </div>
+            <PageHandler
+                nowPage={nowPage}
+                setNowPage={setNowPage}
+                totalPage={rankInfo? (rankInfo.total/rankInfo.page): 1}
+            />
         </div>
     );
 };
