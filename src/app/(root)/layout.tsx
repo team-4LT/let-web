@@ -4,11 +4,13 @@ import Sidebar from "@/components/common/Sidebar";
 import QueryProvider from "@/components/providers/QueryProvider";
 import { CookiesProvider } from "next-client-cookies/server";
 import LoadingProvider from "@/components/providers/LoadingProvider";
+import LoginChecker from "@/components/providers/LoginChecker";
 
 export default function MainLayout({ children }: { children: ReactNode }) {
     return (
         <QueryProvider>
             <CookiesProvider>
+                <LoginChecker />
                 <div className="w-full min-h-screen bg-bg">
                     <LoadingProvider />
                     <Header />
