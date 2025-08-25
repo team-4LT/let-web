@@ -1,3 +1,4 @@
+import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "@/constants/token";
 import customAxios from "@/libs/axios/customAxios";
 import { cookieManager } from "@/utilities/cookie";
 import { useRouter } from "next/navigation";
@@ -24,12 +25,13 @@ export const useLogin = () => {
                     router.push("/");
                     setError(false);
                     alert("로그인 완료.");
-                    const newAccessToken = res.data.accessToken;
-                    const newRefreshToken = res.data.refreshToken;
-                    await cookieManager.set("ACCESS_TOKEN_KEY", newAccessToken); // 쿠키 저장하는 거
                     await cookieManager.set(
-                        "REFRESH_TOKEN_KEY",
-                        newRefreshToken
+                        ACCESS_TOKEN_KEY,
+                        res.data.data.accessToken
+                    );
+                    await cookieManager.set(
+                        REFRESH_TOKEN_KEY,
+                        res.data.data.refreshToken
                     );
                 } else {
                     console.log("인증 실패", res);
