@@ -13,6 +13,7 @@ export const getMealData = async(selectedPeriod:string) => {
     return res.data.data
   }catch(err:any){
     console.error(`식단 데이터 불러오기 실패: ${err}`)
+    alert('네트워크 오류! 다시 시도해주세요!')
     return null
   }
 }
